@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased bg-[#050811] text-[#F5F7FA] selection:bg-[#38BDF8]/30 selection:text-[#F5F7FA]">
         {children}
+        <Analytics />
       </body>
     </html>
   );
