@@ -9,6 +9,8 @@ import {
   MessageCircle,
   Briefcase,
   Sparkles,
+  Copy,
+  Check,
 } from "lucide-react";
 import { PROFILE } from "@/data/profile";
 
@@ -17,11 +19,28 @@ type ContactMode = "project" | "opportunity";
 export function Contact() {
   const shouldReduceMotion = useReducedMotion();
   const [mode, setMode] = useState<ContactMode>("project");
+  const [copied, setCopied] = useState(false);
 
   const projectMessage =
     "Olá Lukas! Vi seu portfólio e gostaria de conversar sobre o desenvolvimento de um site ou sistema.";
   const opportunityMessage =
     "Olá Lukas! Vi seu portfólio e gostaria de conversar sobre uma oportunidade na área de desenvolvimento.";
+
+  const gmailProjectUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+    PROFILE.email
+  )}&su=${encodeURIComponent("Novo Projeto Web")}&body=${encodeURIComponent(
+    projectMessage
+  )}`;
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(PROFILE.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      window.open(gmailProjectUrl, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <>
@@ -107,11 +126,14 @@ export function Contact() {
                             <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
                           </a>
                           <a
-                            href={`mailto:${PROFILE.email}?subject=Novo%20Projeto%20Web`}
+                            href={gmailProjectUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="font-mono text-xs px-5 py-3 rounded-lg border border-[#38BDF8]/20 bg-[#0B1220]/80 text-[#F5F7FA] hover:border-[#38BDF8]/60 hover:text-[#7DD3FC] transition-colors inline-flex items-center gap-2"
                           >
                             <Mail className="w-4 h-4" aria-hidden="true" />
                             <span>ENVIAR E-MAIL</span>
+                            <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
                           </a>
                         </div>
                       </>
@@ -167,18 +189,26 @@ export function Contact() {
                   <ArrowUpRight className="w-4 h-4 text-[#9CA3AF] group-hover:text-[#10B981] transition-colors" aria-hidden="true" />
                 </a>
 
-                <a
-                  href={`mailto:${PROFILE.email}`}
-                  className="jarvis-card-hover flex items-center justify-between p-4 rounded-xl bg-[#050811]/80 border border-[#38BDF8]/15 group"
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  aria-label="Copiar endereço de e-mail"
+                  className="jarvis-card-hover w-full text-left flex items-center justify-between gap-3 p-4 rounded-xl bg-[#050811]/80 border border-[#38BDF8]/15 group cursor-pointer"
                 >
-                  <div>
-                    <p className="font-mono text-[10px] text-[#38BDF8]">E-MAIL</p>
+                  <div className="min-w-0">
+                    <p className="font-mono text-[10px] text-[#38BDF8]">
+                      {copied ? "E-MAIL COPIADO ✓" : "E-MAIL (CLIQUE PARA COPIAR)"}
+                    </p>
                     <p className="text-sm font-medium text-[#F5F7FA] mt-0.5 break-all">
                       {PROFILE.email}
                     </p>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-[#9CA3AF] group-hover:text-[#38BDF8] transition-colors shrink-0" aria-hidden="true" />
-                </a>
+                  {copied ? (
+                    <Check className="w-4 h-4 text-[#10B981] shrink-0" aria-hidden="true" />
+                  ) : (
+                    <Copy className="w-4 h-4 text-[#9CA3AF] group-hover:text-[#38BDF8] transition-colors shrink-0" aria-hidden="true" />
+                  )}
+                </button>
 
                 <div className="grid grid-cols-2 gap-3 pt-1">
                   <a
