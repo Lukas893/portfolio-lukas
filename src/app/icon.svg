@@ -1,0 +1,16 @@
+Set-Content -Path "src/app/icon.svg" -Encoding Ascii -Value @'
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1220" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)" stroke="#38BDF8" stroke-opacity="0.45" stroke-width="2" />
+  <text x="32" y="40" text-anchor="middle" fill="url(#accent)" font-family="monospace" font-size="24" font-weight="800">LM</text>
+</svg>
+'@

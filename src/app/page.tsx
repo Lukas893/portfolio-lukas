@@ -1,18 +1,22 @@
 import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
+import { EngineeringPillars } from "@/components/sections/EngineeringPillars";
+import { TechStack } from "@/components/sections/TechStack";
+import { Contact } from "@/components/sections/Contact";
+
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#060608]">
+    <div className="min-h-screen flex flex-col bg-global-hud">
       <Header />
       <main id="conteudo-principal" className="flex-1">
         <Hero />
+        <About />
         <Projects />
-
-        {/* Âncoras reservadas para as Fases 3 e 4 */}
-        <section id="tecnologias" className="sr-only" aria-label="Tecnologias (Fase 3)" />
-        <section id="sobre" className="sr-only" aria-label="Sobre (Fase 3)" />
-        <section id="contato" className="sr-only" aria-label="Contato (Fase 4)" />
+        <EngineeringPillars />
+        <TechStack />
+        <Contact />
       </main>
     </div>
   );

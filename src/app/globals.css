@@ -1,26 +1,171 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --bg-main: #050811;
+  --bg-surface: #0b1220;
+  --accent-cyan: #00f0ff;
+  --accent-sky: #38bdf8;
+  --accent-orange: #ff4d00;
+  --accent-emerald: #10b981;
+  --text-primary: #f5f7fa;
+  --text-secondary: #9ca3af;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #050811;
+  color: #f5f7fa;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #050811;
+  color: #f5f7fa;
+  overflow-x: hidden;
+}
+
+/* Fundo contínuo com grade fixa + atmosfera azul-clara suave em toda a página */
+.bg-global-hud {
+  background-color: #050811;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(56, 189, 248, 0.14), transparent 60%),
+    radial-gradient(ellipse 55% 40% at 85% 35%, rgba(0, 240, 255, 0.06), transparent 65%),
+    radial-gradient(ellipse 55% 40% at 15% 75%, rgba(56, 189, 248, 0.07), transparent 65%),
+    linear-gradient(to right, rgba(56, 189, 248, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.045) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+  background-attachment: fixed;
+}
+
+/* Superfície translúcida com azul mais claro nas bordas e halo suave */
+.jarvis-glass {
+  background: linear-gradient(
+    180deg,
+    rgba(13, 21, 36, 0.72) 0%,
+    rgba(7, 11, 20, 0.86) 100%
+  );
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  box-shadow:
+    0 12px 40px -20px rgba(56, 189, 248, 0.2),
+    inset 0 1px 0 rgba(125, 211, 252, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.jarvis-glass-subtle {
+  background: linear-gradient(
+    180deg,
+    rgba(13, 21, 36, 0.56) 0%,
+    rgba(8, 13, 24, 0.76) 100%
+  );
+  border: 1px solid rgba(56, 189, 248, 0.12);
+  box-shadow: inset 0 1px 0 rgba(125, 211, 252, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+/* Animação de hover estilo jarvis.lucasvictor.ai */
+.jarvis-card-hover {
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    background-color 0.28s ease;
+}
+
+.jarvis-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.48);
+  box-shadow:
+    0 14px 36px -14px rgba(56, 189, 248, 0.28),
+    0 0 0 1px rgba(56, 189, 248, 0.15),
+    inset 0 1px 0 rgba(186, 230, 253, 0.22);
+}
+
+/* Linha divisória ultrafina em azul claro */
+.hud-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(56, 189, 248, 0.35) 50%,
+    transparent 100%
+  );
+}
+
+@keyframes hud-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hud-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes hud-dash-flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@keyframes hud-scan-vertical {
+  0% {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(360%);
+    opacity: 0;
+  }
+}
+
+.animate-hud-spin {
+  animation: hud-spin 26s linear infinite;
+  transform-origin: center;
+}
+
+.animate-hud-spin-reverse {
+  animation: hud-spin-reverse 18s linear infinite;
+  transform-origin: center;
+}
+
+.animate-hud-flow {
+  stroke-dasharray: 5 7;
+  animation: hud-dash-flow 1.6s linear infinite;
+}
+
+.animate-hud-scan {
+  animation: hud-scan-vertical 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-hud-spin,
+  .animate-hud-spin-reverse,
+  .animate-hud-flow,
+  .animate-hud-scan {
+    animation: none !important;
+  }
+  .jarvis-card-hover:hover {
+    transform: none;
+  }
 }

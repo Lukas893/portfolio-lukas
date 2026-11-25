@@ -6,11 +6,11 @@ export function Projects() {
     <section
       id="projetos"
       aria-labelledby="projects-section-heading"
-      className="py-16 sm:py-20 border-t border-white/10 bg-[#060608]"
+      className="py-16 sm:py-24 scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
         <div className="max-w-3xl space-y-4">
-          <span className="font-mono text-xs tracking-widest uppercase text-[#00F0FF]">
+          <span className="font-mono text-xs tracking-[0.16em] uppercase text-[#00F0FF]">
             01 // SHOWCASE & ENGENHARIA
           </span>
           <h2
@@ -27,8 +27,8 @@ export function Projects() {
         </div>
 
         <div className="space-y-12">
-          {PROJECTS_DATA.map((project) => (
-            <ProjectShowcase key={project.id} project={project} />
+          {PROJECTS_DATA.map((project, index) => (
+            <ProjectShowcase key={project.id} project={project} index={index} />
           ))}
         </div>
       </div>
