@@ -393,203 +393,285 @@ export const PROJECTS_DATA: ProjectData[] = [
     id: "jarvis-ai",
     code: "02",
     title: "JARVIS",
-    category: "ASSISTENTE PESSOAL INTELIGENTE",
-    statusLabel: "PROJETO EXPERIMENTAL | EM DESENVOLVIMENTO",
-    isExperimental: true,
+    category: "ARQUITETURA V2.0",
+    statusLabel: "ARQUITETURA V2.0 | EM OPERAÇÃO LOCAL",
+    isExperimental: false,
     description:
-      "Um projeto experimental de assistente pessoal inteligente, desenvolvido para explorar orquestração de agentes, memória contextual, automação de tarefas e integração com diferentes modelos de inteligência artificial.",
+      "Agente pessoal autônomo em operação local com orquestração multi-agente (281 agentes em 10 esquadrões), memória persistente em 5 camadas com SQLite FTS5, governança de permissões e interface Cockpit em tempo real.",
     stackGroups: [
       {
-        group: "Linguagens & Runtime",
-        items: ["Node.js", "Python"],
+        group: "Core & Runtime",
+        items: ["Node.js", "Python", "WebSockets", "Pytest"],
       },
       {
-        group: "Conceitos Explorados",
-        items: [
-          "Arquitetura Modular",
-          "Orquestração de Agentes",
-          "Memória Contextual",
-          "Automação de Tarefas",
-          "Integração com Modelos e APIs",
-        ],
+        group: "IA, Dados & Automação",
+        items: ["SQLite FTS5", "Multi-LLM", "MCP/ADB"],
       },
     ],
     businessView: {
       sections: [
         {
           code: "01 · OBJETIVO",
-          title: "Explorar um assistente pessoal extensível",
+          title: "Assistente pessoal autônomo com governança",
           content:
-            "Investigar na prática como estruturar um assistente capaz de combinar diferentes capacidades de inteligência artificial em um fluxo coeso, indo além de respostas isoladas.",
+            "Orquestrar 281 agentes especializados em 10 esquadrões para executar tarefas complexas de engenharia, automação e análise com memória contínua e controle explícito de permissões.",
         },
         {
           code: "02 · ARQUITETURA",
-          title: "Estrutura modular em evolução",
+          title: "CognitiveEngine de 10 etapas e Cockpit em tempo real",
           content:
-            "Os componentes são pensados de forma separada — entrada de comandos, coordenação, contexto e conectores externos — para permitir testar novas integrações sem reescrever o núcleo inteiro.",
+            "Arquitetura modular desacoplada que separa interface Cockpit via WebSockets, núcleo cognitivo, roteamento multi-provedor de LLMs e execução segura de ferramentas locais e mobile.",
         },
         {
-          code: "03 · CAPACIDADES EM DESENVOLVIMENTO",
-          title: "Orquestração, contexto e automação",
+          code: "03 · MEMÓRIA & RESILIÊNCIA",
+          title: "5 camadas persistentes e roteamento resiliente",
           content:
-            "O projeto experimenta coordenação entre agentes, retenção de contexto entre interações e acionamento de rotinas automatizadas, em estágio contínuo de validação técnica.",
+            "Persistência em SQLite FTS5 com árvore hierárquica jarvis:// e detecção de contradições, combinada a ModelRouter com Circuit Breaker de 3 estados e avaliação paralela.",
         },
         {
-          code: "04 · EVOLUÇÃO",
-          title: "Laboratório prático de engenharia",
+          code: "04 · OPERAÇÃO",
+          title: "Validação contínua e autoevolução segura",
           content:
-            "Por ser um projeto experimental e em desenvolvimento ativo, o foco atual está na consolidação da arquitetura, na confiabilidade das integrações e no aprendizado técnico aplicado.",
+            "Sistema validado em operação local com suíte Pytest, sandbox de autoevolução com Quality Gate (<= 350 linhas/módulo), rollback automático e trilha de auditoria imutável.",
         },
       ],
-      deliverablesTitle: "Frentes técnicas exploradas no projeto",
+      deliverablesTitle: "Capacidades implementadas na Versão 2.0",
       deliverables: [
-        "Arquitetura modular desacoplada entre núcleo e integrações",
-        "Experimentos de orquestração de agentes para divisão de tarefas",
-        "Estudo e implementação incremental de memória contextual",
-        "Automação de tarefas acionadas por fluxos de comando",
-        "Integração com diferentes modelos de IA e APIs usando Node.js e Python",
+        "CognitiveEngine de 10 etapas orquestrando 281 agentes em 10 esquadrões",
+        "Memória persistente em 5 camadas com SQLite FTS5 e árvore jarvis://",
+        "ModelRouter multi-LLM (Gemini, OpenRouter, Ollama) com Circuit Breaker",
+        "Governança de permissões (Níveis 0 a 4) com fila ACTION assíncrona",
+        "Auditoria imutável SHA-256 (hash-chain) e ponte mobile Android (MCP/ADB)",
       ],
       disclaimer:
-        "Projeto experimental em desenvolvimento contínuo. Não é apresentado como produto comercial finalizado nem possui link público confirmado.",
+        "Sistema pessoal em operação local (Arquitetura v2.0), com suíte de testes automatizados em Pytest e auditoria criptográfica ativa.",
     },
     engineeringView: {
       architectureSummary:
-        "Arquitetura modular experimental construída com Node.js e Python para estudar o desacoplamento entre interface de interação, orquestração de agentes, contexto e chamadas a modelos de IA.",
+        "Arquitetura v2.0 em Node.js e Python combinando CognitiveEngine de 10 etapas, orquestração de 281 agentes em 10 esquadrões, memória SQLite FTS5, ModelRouter resiliente e governança rigorosa de execução.",
       architectureLayers: [
         {
           layer: "Núcleo de Orquestração (Node.js / Python)",
           responsibility:
-            "Coordenação experimental de fluxo entre comandos, agentes especializados e ferramentas.",
+            "CognitiveEngine de 10 etapas + orquestração de 281 agentes em 10 esquadrões com escopo estrito de ferramentas.",
           status: "IMPLEMENTADO",
         },
         {
           layer: "Camada de Memória Contextual",
           responsibility:
-            "Manutenção de contexto entre interações para orientar decisões do assistente.",
-          status: "PLANEJADO",
+            "Memória persistente em 5 camadas (trabalho, episódica, semântica, projetos e preferências) com SQLite FTS5 e árvore hierárquica jarvis://.",
+          status: "IMPLEMENTADO",
         },
         {
           layer: "Conectores de Modelos & APIs",
           responsibility:
-            "Camada de integração para alternar ou combinar diferentes modelos de inteligência artificial.",
+            "ModelRouter multi-provedor (Gemini, OpenRouter, Ollama) com Circuit Breaker de 3 estados, AutoTune e corrida paralela com avaliação 0–100.",
           status: "IMPLEMENTADO",
         },
         {
           layer: "Execução Segura de Automação",
           responsibility:
-            "Controles de confirmação e isolamento de ações executadas pelo assistente.",
-          status: "NAO_VERIFICADO",
+            "ToolManager centralizado, sandbox de autoevolução com Quality Gate (<= 350 linhas/módulo), rollback automático e ponte mobile Android (ADB/MCP).",
+          status: "IMPLEMENTADO",
         },
       ],
       architectureDiagram: {
-        title: "Mapa de Módulos — JARVIS (Experimental)",
+        title: "Mapa de Módulos – JARVIS v2.0",
         subtitle:
-          "Selecione um módulo para visualizar seu papel e estado atual de implementação/verificação.",
-        note: "O repositório local do JARVIS não foi inspecionado nesta sessão; o diagrama reflete apenas os módulos conceituais informados, diferenciando estados.",
+          "Selecione um módulo para inspecionar seu papel na arquitetura em operação local.",
+        note: "Todos os módulos centrais da Arquitetura v2.0 estão implementados e validados em operação local com testes Pytest.",
         nodes: [
           {
             id: "j-entrada",
-            label: "Interface / Entrada",
-            shortType: "COMANDO",
+            label: "Cockpit / WebSockets",
+            shortType: "TEMPO REAL",
             x: 30,
             y: 120,
-            width: 155,
+            width: 165,
             height: 76,
-            type: "Camada de Interação",
+            type: "Interface Cockpit",
             responsibility:
-              "Recebe solicitações do usuário e exibe retornos produzidos pelo núcleo do assistente.",
+              "Interface em tempo real via WebSockets para envio de comandos, fila ACTION (Approve | Edit | Reject) e telemetria dos esquadrões.",
             relations: ["j-orquestrador"],
             status: "IMPLEMENTADO",
             accent: "cyan",
           },
           {
             id: "j-orquestrador",
-            label: "Orquestrador",
-            shortType: "NODE.JS / PYTHON",
+            label: "CognitiveEngine",
+            shortType: "281 AGENTES",
             x: 265,
             y: 120,
             width: 185,
             height: 76,
-            type: "Núcleo Modular",
+            type: "Núcleo de Orquestração",
             responsibility:
-              "Coordena a comunicação entre agentes, contexto e chamadas de automação ou modelos externos.",
+              "Pipeline cognitivo de 10 etapas que coordena 281 agentes em 10 esquadrões com escopo estrito de ferramentas.",
             relations: ["j-entrada", "j-modelos", "j-contexto"],
             status: "IMPLEMENTADO",
             accent: "orange",
           },
           {
             id: "j-modelos",
-            label: "Modelos & APIs",
-            shortType: "INTEGRAÇÃO IA",
+            label: "ModelRouter",
+            shortType: "MULTI-LLM",
             x: 535,
             y: 35,
             width: 190,
             height: 76,
-            type: "Conectores Externos",
+            type: "Conectores & Resiliência",
             responsibility:
-              "Integração com diferentes provedores e modelos de inteligência artificial via API.",
+              "Roteamento entre Gemini, OpenRouter e Ollama com Circuit Breaker de 3 estados, AutoTune e corrida paralela (nota 0–100).",
             relations: ["j-orquestrador"],
             status: "IMPLEMENTADO",
             accent: "emerald",
           },
           {
             id: "j-contexto",
-            label: "Memória & Tarefas",
-            shortType: "EM EVOLUÇÃO",
+            label: "Memória & Automação",
+            shortType: "SQLITE / MCP",
             x: 535,
             y: 205,
             width: 190,
             height: 76,
-            type: "Módulo Experimental",
+            type: "Persistência & Sandbox",
             responsibility:
-              "Persistência de contexto e execução de rotinas automatizadas; detalhes internos de armazenamento não verificados.",
+              "Memória em 5 camadas (SQLite FTS5 + jarvis://), ToolManager, sandbox com Quality Gate (<= 350 linhas) e ponte Android ADB/MCP.",
             relations: ["j-orquestrador"],
-            status: "NAO_VERIFICADO",
-            accent: "neutral",
+            status: "IMPLEMENTADO",
+            accent: "cyan",
           },
         ],
         edges: [
-          { from: "j-entrada", to: "j-orquestrador", label: "Intenção" },
-          { from: "j-orquestrador", to: "j-modelos", label: "Chamadas API" },
-          { from: "j-orquestrador", to: "j-contexto", label: "Contexto / Ações" },
+          { from: "j-entrada", to: "j-orquestrador", label: "Comandos / ACTION" },
+          { from: "j-orquestrador", to: "j-modelos", label: "Circuit Breaker" },
+          { from: "j-orquestrador", to: "j-contexto", label: "FTS5 / Tools" },
         ],
       },
       databaseDiagram: {
-        hasConfirmedDatabase: false,
+        hasConfirmedDatabase: true,
         summary:
-          "Não há um banco de dados ou modelo entidade-relacionamento persistente confirmado para o JARVIS a partir das evidências disponíveis. Seguindo as diretrizes de integridade técnica, nenhum DER fictício foi criado para este projeto.",
+          "Persistência local estruturada em duas bases SQLite independentes: jarvis_memory.db (SQLite + FTS5 para memória em 5 camadas e grafo semântico) e jarvis_audit.db (trilha imutável protegida por triggers e hash-chain SHA-256).",
+        diagram: {
+          title: "Persistência Local – Bases SQLite do JARVIS v2.0",
+          subtitle:
+            "Selecione um banco ou tabela para inspecionar a estrutura de memória FTS5 e auditoria imutável.",
+          note: "Separação física entre memória cognitiva (jarvis_memory.db) e cofre de auditoria imutável (vault/jarvis_audit.db).",
+          nodes: [
+            {
+              id: "db-memory",
+              label: "jarvis_memory.db",
+              shortType: "SQLITE + FTS5",
+              x: 40,
+              y: 120,
+              width: 185,
+              height: 76,
+              type: "Base de Memória (5 Camadas)",
+              responsibility:
+                "Armazena episódios, fatos/nós semânticos, arestas de relacionamento, preferências e estado de tarefas com busca FTS5 e árvore jarvis://.",
+              relations: ["db-semantic", "db-tasks"],
+              status: "IMPLEMENTADO",
+              accent: "cyan",
+            },
+            {
+              id: "db-semantic",
+              label: "Grafo & Episódios",
+              shortType: "FTS5 / NÓS",
+              x: 300,
+              y: 35,
+              width: 190,
+              height: 76,
+              type: "Tabelas Semânticas",
+              responsibility:
+                "Tabelas de episódios, fatos/nós semânticos e arestas de relacionamento com detecção automática de contradições.",
+              relations: ["db-memory"],
+              status: "IMPLEMENTADO",
+              accent: "emerald",
+            },
+            {
+              id: "db-tasks",
+              label: "Preferências & Tarefas",
+              shortType: "ESTADO LOCAL",
+              x: 300,
+              y: 205,
+              width: 190,
+              height: 76,
+              type: "Estado & Preferências",
+              responsibility:
+                "Persistência de preferências do usuário, contexto de projetos ativos e estado contínuo de tarefas em execução.",
+              relations: ["db-memory", "db-audit"],
+              status: "IMPLEMENTADO",
+              accent: "orange",
+            },
+            {
+              id: "db-audit",
+              label: "jarvis_audit.db",
+              shortType: "HASH-CHAIN",
+              x: 555,
+              y: 120,
+              width: 185,
+              height: 76,
+              type: "Auditoria Imutável",
+              responsibility:
+                "Trilha de eventos em vault/jarvis_audit.db protegida por triggers SQLite BEFORE UPDATE/DELETE e encadeamento criptográfico SHA-256.",
+              relations: ["db-tasks"],
+              status: "IMPLEMENTADO",
+              accent: "emerald",
+            },
+          ],
+          edges: [
+            { from: "db-memory", to: "db-semantic", label: "Índice FTS5" },
+            { from: "db-memory", to: "db-tasks", label: "jarvis://" },
+            { from: "db-tasks", to: "db-audit", label: "SHA-256 Chain" },
+          ],
+        },
       },
       security: {
-        implemented: [],
+        implemented: [
+          {
+            title: "PermissionManager (Níveis 0 a 4)",
+            detail:
+              "Governança granular de permissões com fila assíncrona ACTION (Approve | Edit | Reject) para ações sensíveis.",
+          },
+          {
+            title: "Auditoria Imutável (vault/jarvis_audit.db)",
+            detail:
+              "Trilha de auditoria protegida por triggers SQLite BEFORE UPDATE/DELETE e encadeamento criptográfico SHA-256 (hash-chain).",
+          },
+          {
+            title: "PromptInjectionGuard & Segredos",
+            detail:
+              "Proteção contra Prompt Injection, isolamento de segredos em .env e higienização de histórico Git.",
+          },
+          {
+            title: "Ponte Mobile Autenticada (ADB/MCP)",
+            detail:
+              "Autenticação por PIN com verificação HMAC e allowlist contra Path Traversal na transferência de arquivos.",
+          },
+        ],
         planned: [
           {
-            title: "Confirmação explícita para ações automatizadas",
+            title: "Containerização Docker completa",
             detail:
-              "Previsão de validação antes de executar comandos que alterem arquivos ou enviem dados externos.",
+              "Empacotamento isolado de serviços e dependências para padronizar a execução entre ambientes.",
           },
           {
-            title: "Gestão isolada de credenciais de APIs",
+            title: "Criptografia em repouso dos bancos locais",
             detail:
-              "Separação de chaves de provedores de IA em variáveis de ambiente fora do versionamento.",
+              "Camada de criptografia transparente para os arquivos SQLite locais (jarvis_memory.db e jarvis_audit.db).",
           },
         ],
-        unverified: [
-          {
-            title: "Controles de segurança no código-fonte",
-            detail:
-              "O repositório local do JARVIS não foi inspecionado; controles de autenticação, sanitização e permissões permanecem não verificados.",
-          },
-        ],
+        unverified: [],
         disclaimer:
-          "Por se tratar de projeto experimental sem auditoria direta do repositório nesta sessão, nenhum mecanismo de segurança é declarado como comprovado.",
+          "Controles de governança, auditoria criptográfica e proteção contra injeção de prompt ativos e validados em operação local na Arquitetura v2.0.",
       },
       evolution: {
         summary:
-          "Projeto conduzido como laboratório de engenharia de software para investigar arquiteturas de assistentes, orquestração e integração entre Node.js e Python.",
+          "Arquitetura v2.0 consolidada em operação local, combinando Node.js, Python, SQLite FTS5 e automação segura com evolução guiada por Quality Gate.",
         decisions: [
-          "Separação modular entre núcleo de orquestração e conectores de modelos para facilitar experimentação com múltiplos provedores.",
-          "Combinação de Node.js e Python para aproveitar ecossistemas complementares de APIs web e automação/IA.",
-          "Manutenção do projeto como experimento em evolução contínua, evitando promessas de produto finalizado antes da maturação técnica.",
+          "Separação entre memória cognitiva (jarvis_memory.db) e auditoria imutável (jarvis_audit.db) para integridade criptográfica.",
+          "Uso de ModelRouter com Circuit Breaker de 3 estados e corrida paralela para evitar dependência de um único provedor de LLM.",
+          "Sandbox de autoevolução com limite de 350 linhas por módulo e rollback automático para manter a base sustentável.",
         ],
       },
     },

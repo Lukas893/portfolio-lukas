@@ -6,9 +6,15 @@ interface SecurityStatusProps {
 }
 
 export function SecurityStatus({ security }: SecurityStatusProps) {
+  const hasUnverified = security.unverified.length > 0;
+
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div
+        className={`grid grid-cols-1 ${
+          hasUnverified ? "lg:grid-cols-3" : "lg:grid-cols-2"
+        } gap-4`}
+      >
         {/* IMPLEMENTADO */}
         <div className="p-5 rounded-xl bg-[#060608] border border-[#10B981]/30 space-y-3">
           <div className="flex items-center gap-2 font-mono text-xs font-semibold text-[#10B981] uppercase tracking-wider">
@@ -26,7 +32,7 @@ export function SecurityStatus({ security }: SecurityStatusProps) {
             </ul>
           ) : (
             <p className="text-xs text-[#9CA3AF]">
-              Nenhum controle confirmado por auditoria direta nesta sessão.
+              Nenhum controle implementado listado.
             </p>
           )}
         </div>
@@ -51,13 +57,13 @@ export function SecurityStatus({ security }: SecurityStatusProps) {
           )}
         </div>
 
-        {/* NÃO VERIFICADO */}
-        <div className="p-5 rounded-xl bg-[#060608] border border-white/15 space-y-3">
-          <div className="flex items-center gap-2 font-mono text-xs font-semibold text-[#9CA3AF] uppercase tracking-wider">
-            <HelpCircle className="w-4 h-4" aria-hidden="true" />
-            <span>NÃO VERIFICADO</span>
-          </div>
-          {security.unverified.length > 0 ? (
+        {/* NÃO VERIFICADO (só renderiza se houver itens) */}
+        {hasUnverified && (
+          <div className="p-5 rounded-xl bg-[#060608] border border-white/15 space-y-3">
+            <div className="flex items-center gap-2 font-mono text-xs font-semibold text-[#9CA3AF] uppercase tracking-wider">
+              <HelpCircle className="w-4 h-4" aria-hidden="true" />
+              <span>NÃO VERIFICADO</span>
+            </div>
             <ul className="space-y-3">
               {security.unverified.map((item) => (
                 <li key={item.title} className="space-y-1">
@@ -66,10 +72,8 @@ export function SecurityStatus({ security }: SecurityStatusProps) {
                 </li>
               ))}
             </ul>
-          ) : (
-            <p className="text-xs text-[#9CA3AF]">Sem itens pendentes de verificação.</p>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       <p className="text-xs text-[#9CA3AF] flex items-start gap-2">
