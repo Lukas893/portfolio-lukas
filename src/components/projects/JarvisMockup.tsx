@@ -9,32 +9,32 @@ const ORBIT_NODES = [
     label: "COMANDOS",
     x: 68,
     y: 42,
-    detail: "Recepção de intenções e interface de interação em evolução.",
-    status: "EXPERIMENTAL",
+    detail: "Interface Cockpit em tempo real via WebSockets com fila ACTION.",
+    status: "OPERACIONAL",
   },
   {
     id: "agentes",
     label: "AGENTES",
     x: 292,
     y: 42,
-    detail: "Orquestração modular para delegação de tarefas especializadas.",
-    status: "EXPERIMENTAL",
+    detail: "Orquestração de 281 agentes em 10 esquadrões pelo CognitiveEngine.",
+    status: "OPERACIONAL",
   },
   {
     id: "contexto",
     label: "MEMÓRIA",
     x: 56,
     y: 178,
-    detail: "Estudo contínuo de retenção de contexto entre interações.",
-    status: "EM DESENVOLVIMENTO",
+    detail: "Persistência em 5 camadas com SQLite FTS5 e árvore jarvis://.",
+    status: "OPERACIONAL",
   },
   {
     id: "modelos",
     label: "MODELOS IA",
     x: 304,
     y: 178,
-    detail: "Conectores desacoplados para integrar diferentes LLMs via API.",
-    status: "NODE.JS / PYTHON",
+    detail: "ModelRouter multi-LLM com Circuit Breaker e avaliação paralela.",
+    status: "OPERACIONAL",
   },
 ];
 
@@ -58,18 +58,18 @@ export function JarvisMockup() {
         <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00F0FF]">
           — CONSTELAÇÃO MODULAR · JARVIS
         </span>
-        <span className="font-mono text-[10px] px-2 py-0.5 rounded-full bg-[#FF4D00]/10 text-[#FF4D00] border border-[#FF4D00]/30">
-          DEMONSTRAÇÃO CONCEITUAL
+        <span className="font-mono text-[10px] px-2 py-0.5 rounded-full bg-[#10B981]/10 text-[#10B981] border border-[#10B981]/30">
+          ARQUITETURA V2.0
         </span>
       </div>
 
       <div className="jarvis-glass rounded-2xl p-4 sm:p-5 relative overflow-hidden">
-        {/* Esfera central + linhas radiais (estilo 00:03-00:06) */}
+        {/* Esfera central + linhas radiais */}
         <svg
           viewBox="0 0 360 220"
           className="w-full h-auto select-none"
           role="img"
-          aria-label="Diagrama orbital conceitual do projeto JARVIS"
+          aria-label="Diagrama orbital da arquitetura v2.0 do projeto JARVIS"
         >
           {/* Linhas radiais conectando o núcleo aos nós */}
           {ORBIT_NODES.map((node, idx) => {
@@ -192,7 +192,7 @@ export function JarvisMockup() {
                 </span>
                 <p className="text-xs text-[#9CA3AF] mt-0.5">{current.detail}</p>
               </div>
-              <span className="font-mono text-[9.5px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#F5F7FA]/80 w-fit shrink-0">
+              <span className="font-mono text-[9.5px] px-2 py-0.5 rounded bg-[#10B981]/10 border border-[#10B981]/35 text-[#10B981] w-fit shrink-0">
                 {current.status}
               </span>
             </motion.div>
