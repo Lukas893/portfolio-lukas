@@ -35,10 +35,10 @@ const STACK_ITEMS: TechItem[] = [
     usage: "Estruturação de rotas REST, middlewares e arquitetura MVC.",
   },
   {
-    name: "MongoDB Atlas, Mongoose & SQL",
+    name: "MongoDB & SQL",
     category: "backend",
     categoryLabel: "Banco de Dados",
-    usage: "Modelagem de coleções NoSQL, consultas SQL, validações e índices compostos.",
+    usage: "Modelagem NoSQL (Atlas/Mongoose), consultas SQL, validações e índices compostos.",
   },
   {
     name: "node-cron & Rate Limit",
@@ -101,10 +101,10 @@ const STACK_ITEMS: TechItem[] = [
     usage: "Validação de rotas, payloads JSON e cenários de erro.",
   },
   {
-    name: "Vercel, Render & UptimeRobot",
+    name: "Vercel & Render",
     category: "infra",
-    categoryLabel: "Deploy & Monitoramento",
-    usage: "Deploy contínuo (CI/CD), hospedagem de aplicações Next.js/Node.js e monitoramento de disponibilidade.",
+    categoryLabel: "Deploy & Cloud",
+    usage: "Deploy contínuo (CI/CD), hospedagem Next.js/Node.js e monitoramento (UptimeRobot).",
   },
   {
     name: "Linux, Windows & Redes",
